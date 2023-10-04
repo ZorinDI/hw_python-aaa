@@ -1,6 +1,3 @@
-import csv
-
-
 def file_opener(file_name = 'D:\Corp_Summary (1).csv'):
     """ Открывает файл с информацией, и возвращает строковое представление файла
     без первой строчки(в которой название столбцов)"""
@@ -23,7 +20,8 @@ def hierarchy(file_name):
                 departments[j[1]].append(j[2])
 
     for name, value in departments.items():
-        print(name, ':', *value)
+        print(name, ':', end=' ')
+        print(*value, sep=', ')
 
 
 def report(file_name):
@@ -43,6 +41,8 @@ def report(file_name):
                 reports[i[1]][2] = float(i[-1])
             if reports[i[1]][3] < float(i[-1]):
                 reports[i[1]][3] = float(i[-1])
+    for keys, values in reports.items():
+        reports[keys][4] = values[4] / values[1]
 
     return reports
 
@@ -53,18 +53,22 @@ def print_report(file_name):
     reports = report(file_name)
 
     for values in reports.values():
-        avg = values[4] / values[1]
-        print(f'{values[0]}: численность: {values[1]}, вилка: {values[2]} - {values[3]}, средняя зарплата: {avg}')
+        print(f'{values[0]}: численность: {values[1]}, вилка: {values[2]} - {values[3]}, средняя зарплата: {values[4]}')
 
 
 def saving_with_csv(file_name, new_file_name):
+    """Функция, которая записывает в новый csv файл с названием new_file_name
+    репорт"""
     reports = report(file_name)
     with open(new_file_name, 'w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writeheader()
-        writer.writerows(reports)
+        for values in reports.values():
+            file.write(f'{values[0]}: численность: {values[1]}, вилка: {values[2]} - {values[3]}, средняя зарплата: {values[4]}')
+            file.write('\n')
 
 
-
+"""
+Я тестировал на файле из степика и всё работало :)
 hierarchy('D:\Corp_Summary (1).csv')
 print_report('D:\Corp_Summary (1).csv')
+saving_with_csv('D:\Corp_Summary (1).csv', 'abc.csv')
+"""
