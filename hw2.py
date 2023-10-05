@@ -1,4 +1,4 @@
-def file_opener(file_name = 'D:\Corp_Summary (1).csv'):
+def file_opener(file_name):
     """ Открывает файл с информацией, и возвращает строковое представление файла
     без первой строчки(в которой название столбцов)"""
     return open(file_name, 'r').readlines()[1:]
@@ -56,19 +56,37 @@ def print_report(file_name):
         print(f'{values[0]}: численность: {values[1]}, вилка: {values[2]} - {values[3]}, средняя зарплата: {values[4]}')
 
 
-def saving_with_csv(file_name, new_file_name):
+def saving_with_csv(file_name, new_file_name='new_csv.csv'):
     """Функция, которая записывает в новый csv файл с названием new_file_name
     репорт"""
     reports = report(file_name)
     with open(new_file_name, 'w', newline='') as file:
         for values in reports.values():
-            file.write(f'{values[0]}: численность: {values[1]}, вилка: {values[2]} - {values[3]}, средняя зарплата: {values[4]}')
+            file.write(f'{values[0]}: численность: {values[1]}, вилка:'
+                       f' {values[2]} - {values[3]}, средняя зарплата: {values[4]}')
             file.write('\n')
 
 
-"""
-Я тестировал на файле из степика и всё работало :)
-hierarchy('D:\Corp_Summary (1).csv')
-print_report('D:\Corp_Summary (1).csv')
-saving_with_csv('D:\Corp_Summary (1).csv', 'abc.csv')
-"""
+def start_program(file_name, new_file_name='new_csv.csv'):
+    """Функция принимает файл, с которым будет работать и просить ввести число, чтобы запустить нужную программу"""
+    print('Введите число от 1 до 3 если хотите: \n'
+          '1. Вывести иерархию команд \n'
+          '2. Вывести сводный отчёт по департаментам \n'
+          '3. Сохранить сводный отчёт по департаментам в новый файл.')
+
+    numb = int(input())
+
+    if numb == 1:
+        hierarchy(file_name)
+    elif numb == 2:
+        print_report(file_name)
+    elif numb == 3:
+        saving_with_csv(file_name, new_file_name)
+    else:
+        print('Sorry, your number out of range')
+
+
+# Запускает начало работы
+start_program('D:\Corp_Summary (1).csv')
+
+# Я тестировал на файле из степика и всё работало :)
