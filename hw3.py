@@ -4,7 +4,6 @@ class CountVectorizer:
         self.dict = {}
         self.matrix = []
 
-
     def dict_transformer(self, texts):
         """Преобразует все слова в переданном массиве и запоминает номера добавления новых элементов"""
         schet = 0
@@ -14,7 +13,6 @@ class CountVectorizer:
                 if word not in self.dict:
                     self.dict[word] = schet
                     schet += 1
-
 
     def fit_transform(self, texts: list) -> list:
         """Фунцкия смотрит на каждое слово в отдельной строке и добавляет 1 на то место,
@@ -35,3 +33,7 @@ class CountVectorizer:
         if self.dict == {}:
             self.dict_transformer(texts[0])
         return list(self.dict.keys())
+
+
+if __name__ == "__main__":
+    print('Success')
