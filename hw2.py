@@ -86,7 +86,5 @@ def start_program(file_name, new_file_name='new_csv.csv'):
         print('Sorry, your number out of range')
 
 
-# Запускает начало работы
-start_program('D:\Corp_Summary (1).csv')
-
-# Я тестировал на файле из степика и всё работало :)
+if __name__ == "__main__":
+    print('Success')
