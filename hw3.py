@@ -16,7 +16,10 @@ class CountVectorizer:
 
     def fit_transform(self, texts: list) -> list:
         """Фунцкия смотрит на каждое слово в отдельной строке и добавляет 1 на то место,
-        в котором слово было добавлено в словарь"""
+        в котором слово было добавлено в словарь. Так же для каждого отдельного вызова
+        fit_transform нужно очистить словарь и терм-документную матрицу"""
+        self.dict = {}
+        self.matrix = []
         self.dict_transformer(texts)
         for string in texts:
             matrix_row = [0 for i in range(len(self.dict))]
