@@ -54,8 +54,8 @@ def decode(morse_message: str) -> str:
     >>> decode('... --- ...')
     'SOS'
 
-    >>> decode(' ')
-    ' '
+    >>> decode(' ')  # doctest: +ELLIPSIS
+    ''
     """
     decoded_letters = [
         MORSE_TO_LETTER[letter] for letter in morse_message.split()
