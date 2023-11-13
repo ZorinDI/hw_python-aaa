@@ -1,0 +1,40 @@
+Trying:
+    decode('... --- ...')
+Expecting:
+    'SOS'
+ok
+Trying:
+    decode(' ')  # doctest.NORMALIZE_WHITESPACE
+Expecting:
+    ''
+ok
+Trying:
+    encode('A')
+Expecting:
+    '.-'
+ok
+Trying:
+    encode('SOS')
+Expecting:
+    '... --- ...'
+ok
+Trying:
+    encode('A B -') # doctest: +ELLIPSIS
+Expecting:
+    '.-   -...   -....-'
+ok
+Trying:
+    encode('Русские буквы')
+Expecting:
+    Traceback (most recent call last):
+    ...
+    KeyError: 'Р'
+ok
+1 items had no tests:
+    morse
+2 items passed all tests:
+   2 tests in morse.decode
+   4 tests in morse.encode
+6 tests in 3 items.
+6 passed and 0 failed.
+Test passed.

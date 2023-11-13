@@ -1,0 +1,10 @@
+============================= test session starts =============================
+collecting ... collected 5 items
+
+test.py::test_from_morse[.--A] PASSED                                    [ 20%]
+test.py::test_from_morse[... --- ...-SOS] PASSED                         [ 40%]
+test.py::test_from_morse[.-   -...   -....--AB-] PASSED                  [ 60%]
+test.py::test_from_morse[.... . .-.. .-.. --- .-- --- .-. .-.. -.. ..--..-HELLOWORLD?] PASSED [ 80%]
+test.py::test_from_morse[-] PASSED                                       [100%]
+
+============================== 5 passed in 0.02s ==============================

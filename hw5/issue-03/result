@@ -1,0 +1,9 @@
+============================= test session starts =============================
+collecting ... collected 4 items
+
+test.py::Testing::test_capitals PASSED                                   [ 25%]
+test.py::Testing::test_number PASSED                                     [ 50%]
+test.py::Testing::test_with_nothing PASSED                               [ 75%]
+test.py::Testing::test_wrong_types_ex PASSED                             [100%]
+
+============================== 4 passed in 0.02s ==============================

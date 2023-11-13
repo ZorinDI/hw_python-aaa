@@ -32,8 +32,9 @@ class Testing(unittest.TestCase):
         ]
         self.assertEqual(actual, expected)
 
-    def handl_exception(self):
-        try:
-            actual = fit_transform([])
-        except TypeError:
-            print("Oops! Expected at least 1 arguments, got 0.  Try again...")
+    def test_with_nothing(self):
+        self.assertRaises(TypeError, fit_transform)
+
+
+if __name__ == "__main__":
+    unittest.main()

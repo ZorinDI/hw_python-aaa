@@ -1,5 +1,6 @@
 """Morse Code Translator"""
 import doctest
+doctest.NORMALIZE_WHITESPACE
 
 LETTER_TO_MORSE = {
     'A': '.-', 'B': '-...', 'C': '-.-.',
@@ -35,8 +36,13 @@ def encode(message: str) -> str:
     >>> encode('SOS')
     '... --- ...'
 
-    >>> encode('A B -')
+    >>> encode('A B -') # doctest: +ELLIPSIS
     '.-   -...   -....-'
+
+    >>> encode('Русские буквы')
+    Traceback (most recent call last):
+    ...
+    KeyError: 'Р'
 
 
     """
@@ -54,7 +60,7 @@ def decode(morse_message: str) -> str:
     >>> decode('... --- ...')
     'SOS'
 
-    >>> decode(' ')  # doctest: +ELLIPSIS
+    >>> decode(' ')  # doctest.NORMALIZE_WHITESPACE
     ''
     """
     decoded_letters = [
