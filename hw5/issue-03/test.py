@@ -32,8 +32,9 @@ class Testing(unittest.TestCase):
         ]
         self.assertEqual(actual, expected)
 
-    def test_with_nothing(self):
-        self.assertRaises(TypeError, fit_transform)
+    def test_empty(self):
+        with self.assertRaises(TypeError):
+            fit_transform()
 
 
 if __name__ == "__main__":
