@@ -1,0 +1,12 @@
+1. python -m pytest -q .\hw5\issue-05\test.py --cov=what_is_year_now
+
+2. python -m pytest -v .\hw5\issue-05\test.py --cov=what_is_year_now --cov-report html
+
+---------- coverage: platform win32, python 3.10.6-final-0 -----------
+Name                               Stmts   Miss  Cover
+------------------------------------------------------
+hw5\issue-05\what_is_year_now.py      24      4    83%
+------------------------------------------------------
+TOTAL                                 24      4    83%
+
+3 passed in 0.20s
